@@ -1,0 +1,22 @@
+<table >
+  <thead>
+  <tr>
+    <th
+            *ngFor="let item of dataTable.headers;  let i = index"
+            class="row"
+            [ngClass]="{'up': isActivColumn==i && directionUp, 'down':  isActivColumn==i && !directionUp}"
+            (click)="setFilter(i)"
+    >
+      {{item}}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let itemRow of dataTableBody | filterColumn : directionUp :columnFilter">
+    <td *ngFor="let item of itemRow">
+      {{item}}
+    </td>
+  </tr>
+  </tbody>
+</table>
+
